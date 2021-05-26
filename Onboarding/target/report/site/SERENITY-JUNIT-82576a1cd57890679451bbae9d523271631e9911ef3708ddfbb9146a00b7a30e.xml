@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="2" name="loginTests.LoginTestsParameterized" skipped="0" tests="4" time="5.23" timestamp="2021-05-21 04:53:39"><testcase classname="loginTests.LoginTestsParameterized" name="Parameterized Test run with array of username and password - EMPTY USER"><failure message="User is a PARAMETRIZED empty user and&#10;Expected: is &quot;Epic sadface: Username is required&quot;&#10;     but: was &quot;Epic sadface: Sorry, this user has been locked out.&quot;" type="java.lang.AssertionError">User is a PARAMETRIZED empty user and
+Expected: is "Epic sadface: Username is required"
+     but: was "Epic sadface: Sorry, this user has been locked out."</failure><system-err>User is a PARAMETRIZED empty user and
+Expected: is "Epic sadface: Username is required"
+     but: was "Epic sadface: Sorry, this user has been locked out."&#13;
+steps.LoginSteps.emptyUserErrorCheck(LoginSteps.java:75)&#13;
+loginTests.LoginTestsParameterized.loginCheckAndValidationEmptyUser(LoginTestsParameterized.java:64)&#13;
+</system-err></testcase><testcase classname="loginTests.LoginTestsParameterized" name="Parameterized Test run with array of username and password - LOCKED OUT USER"><failure message="User is a PARAMETRIZED LockedOut user and&#10;Expected: is &quot;Epic sadface: Sorry, this user has been locked out.&quot;&#10;     but: was &quot;Epic sadface: Username is required&quot;" type="java.lang.AssertionError">User is a PARAMETRIZED LockedOut user and
+Expected: is "Epic sadface: Sorry, this user has been locked out."
+     but: was "Epic sadface: Username is required"</failure><system-err>User is a PARAMETRIZED LockedOut user and
+Expected: is "Epic sadface: Sorry, this user has been locked out."
+     but: was "Epic sadface: Username is required"&#13;
+steps.LoginSteps.lockedOutUserErrorCheck(LoginSteps.java:70)&#13;
+loginTests.LoginTestsParameterized.loginCheckAndValidationLockedOutUser(LoginTestsParameterized.java:52)&#13;
+</system-err></testcase></testsuite>

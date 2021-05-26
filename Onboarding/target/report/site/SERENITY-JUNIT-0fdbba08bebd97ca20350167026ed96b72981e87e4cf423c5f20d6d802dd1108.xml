@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="loginTests.LoginTests" skipped="0" tests="1" time="3.87" timestamp="2021-05-20 06:46:49"><testcase classname="loginTests.LoginTests" name="Login user with valid credentials"><failure message="&#10;Expected: is &quot;https://www.saucedemo.com/&quot;&#10;     but: was &quot;https://www.saucedemo.com/inventory.html&quot;" type="java.lang.AssertionError">
+Expected: is "https://www.saucedemo.com/"
+     but: was "https://www.saucedemo.com/inventory.html"</failure><system-err>
+Expected: is "https://www.saucedemo.com/"
+     but: was "https://www.saucedemo.com/inventory.html"&#13;
+steps.LoginSteps.verifyLockedOutUserIsOnCorrectPage(LoginSteps.java:25)&#13;
+loginTests.LoginTests.loginValidUser(LoginTests.java:45)&#13;
+</system-err></testcase></testsuite>

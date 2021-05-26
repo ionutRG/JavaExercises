@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="itemPurchaseTests.ItemPurchaseTests" skipped="0" tests="1" time="4.33" timestamp="2021-05-26 09:25:05"><testcase classname="itemPurchaseTests.ItemPurchaseTests" name="Login with StandardUser; Check if Cart is empty; Add BP to Cart; Check BP added to Cart"><error type="java.lang.NullPointerException"/><system-err>null&#13;
+itemPurchaseTests.ItemPurchaseTests.loginAndAddBackpackToCart(ItemPurchaseTests.java:149)&#13;
+</system-err></testcase></testsuite>

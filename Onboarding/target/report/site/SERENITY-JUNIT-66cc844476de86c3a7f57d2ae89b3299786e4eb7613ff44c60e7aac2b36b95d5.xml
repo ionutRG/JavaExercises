@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="3" name="loginTests.LoginTestsParameterized" skipped="0" tests="4" time="4.41" timestamp="2021-05-21 03:32:16"><testcase classname="loginTests.LoginTestsParameterized" name="Parameterized Test run with array of username and password"><failure message="&#10;Expected: is &quot;https://www.saucedemo.com/inventory.html&quot;&#10;     but: was &quot;https://www.saucedemo.com/&quot;" type="java.lang.AssertionError">
+Expected: is "https://www.saucedemo.com/inventory.html"
+     but: was "https://www.saucedemo.com/"</failure><system-err>
+Expected: is "https://www.saucedemo.com/inventory.html"
+     but: was "https://www.saucedemo.com/"&#13;
+steps.LoginSteps.verifyStandardUserSuccessfullyLoggedIn(LoginSteps.java:20)&#13;
+loginTests.LoginTestsParameterized.loginCheckAndValidation(LoginTestsParameterized.java:57)&#13;
+</system-err></testcase></testsuite>

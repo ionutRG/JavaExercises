@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="2" failures="0" name="loginTests.ItemPurchaseTests" skipped="0" tests="4" time="16.45" timestamp="2021-05-25 08:26:53"><testcase classname="loginTests.ItemPurchaseTests" name="Add Backpack to Cart"/><testcase classname="loginTests.ItemPurchaseTests" name="Check item added to Cart successfully"><error message="Timed out after 2 seconds. Element not found&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'CJ003963LT', ip: '192.168.56.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.10'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">Timed out after 2 seconds. Element not found
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'CJ003963LT', ip: '192.168.56.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.10'
+Driver info: driver.version: unknown</error><system-err>Timed out after 2 seconds. Element not found
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'CJ003963LT', ip: '192.168.56.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.10'
+Driver info: driver.version: unknown&#13;
+pageObjects.InventoryPageObject.getBackpackRemoveButtonDisplayed(InventoryPageObject.java:57)&#13;
+loginTests.ItemPurchaseTests.checkItemAddedToCart(ItemPurchaseTests.java:187)&#13;
+</system-err></testcase><testcase classname="loginTests.ItemPurchaseTests" name="Check Cart is empty"><error type="java.lang.NullPointerException"/><system-err>null&#13;
+loginTests.ItemPurchaseTests.checkEmptyCart(ItemPurchaseTests.java:161)&#13;
+</system-err></testcase><testcase classname="loginTests.ItemPurchaseTests" name="Login with valid credentials - StandardUser"/></testsuite>
