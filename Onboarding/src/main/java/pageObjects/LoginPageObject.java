@@ -35,12 +35,4 @@ public class LoginPageObject extends PageObjectBase{
     public boolean getProblemUserElement() {
         return problemUserElement.isDisplayed();
     }
-
-//    public boolean getProblemUserElementCounts() {
-//        for (int i = 1; i <= 100; i++) {
-//            System.out.println("Am intrat in FOR pentru ProblemUser cu numar: " + i + "si element gasit: " + problemUserElement);
-//            problemUserElement.isDisplayed();
-//        }
-//        System.out.println("am gasit: " + getProblemUserElementCounts());
-//    }
 }

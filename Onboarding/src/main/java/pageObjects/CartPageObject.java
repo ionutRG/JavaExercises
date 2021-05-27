@@ -1,6 +1,8 @@
 package pageObjects;
 
+import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -28,51 +30,67 @@ public class CartPageObject extends PageObjectBase {
     @FindBy(xpath = "//button[contains(@id, 'remove-sauce-labs-backpack')]")
     WebElement getItemRemoveButton;
 
+    @FindBy(xpath = "//button[contains(@id, 'checkout')]")
+    WebElement getYourCartCheckoutButton;
+
     @FindBy(xpath="//div[@class = \"cart_item\"]")
     List<WebElement> cartItems;
 
+
     public By itemNameLocator = By.xpath("//div[@class='inventory_item_name']");
 
-    public void getHeaderText() {
-        getHeader.getText();
+    public String getHeaderText() {
+        return getHeader.getText();
     }
 
-    public void getQtyLabel() {
-        getCartQuantityLabel.getText();
+    public String getQtyLabel() {
+        return getCartQuantityLabel.getText();
     }
 
-    public void getDescrLabel() {
-        getCartDescriptionLabel.getText();
+    public String getDescrLabel() {
+        return getCartDescriptionLabel.getText();
     }
 
-    public void getItemNameFromCart() {
-        getItemName.getText();
+    public String getItemNameFromCart() {
+        return getItemName.getText();
     }
 
-    public void getItemDescrFromCart() {
-        getItemDesc.getText();
+    public String getItemDescrFromCart() {
+        return getItemDesc.getText();
     }
 
-    public void getItemPriceFromCart() {
-        getItemPrice.getText();
+    public String getItemPriceFromCart() {
+        return getItemPrice.getText();
     }
 
-    public void getRemoveTextFromCart() {
-        getItemRemoveButton.getText();
+    public String getRemoveTextFromCart() {
+        return getItemRemoveButton.getText();
     }
 
     public boolean getRemoveElementFromCart() {
         return getItemRemoveButton.isDisplayed();
     }
 
-//    public WebElement getCartItem(String itemName) {
-//        for (WebElement item: cartItems) {
-//            if (itemName.equals(item.findElement(itemNameLocator).getText())) {
-//                return item;
-//            }
-//        }
-//        return null;
-//    }
+    public String getCheckoutTextFromCart() {
+        return getYourCartCheckoutButton.getText();
+    }
+
+    public boolean getCheckoutElementFromCart() {
+        return getYourCartCheckoutButton.isDisplayed();
+    }
+
+    public void clickCheckoutButtonCart() {
+        getYourCartCheckoutButton.click();
+    }
+
+    public WebElement getCartItem(String itemName) {
+        for (WebElement item: cartItems) {
+            if (itemName.equals(item.findElement(itemNameLocator).getText())) {
+                return item;
+            }
+        }
+        return null;
+    }
 
 //    public void removeItemFormCart(String itemName) {
 //        WebElement item = getCartItem(itemName);

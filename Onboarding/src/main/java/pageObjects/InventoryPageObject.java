@@ -1,67 +1,86 @@
 package pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class InventoryPageObject extends PageObjectBase {
-
-//    get Backpack AddToCart WebElement
-    @FindBy(xpath = "//button[contains(@name, 'add-to-cart-sauce-labs-backpack')]")
-    WebElement addToCartBackpackFromInventoryPage;
-
-//    get Backpack name/description/price WebElement
-    @FindBy(xpath = "//div[contains(@class, 'inventory_item_name')]")
-    WebElement getBackpackNameFromInventoryPage;
-    @FindBy(xpath = "//div[contains(@class, 'inventory_item_desc')]")
-    WebElement getBackpackDescriptionFromInventoryPage;
-    @FindBy(xpath = "//div[contains(@class, 'inventory_item_price')]")
-    WebElement getBackpackPriceFromInventoryPage;
 
 //    get cart button item number badge (when NOT empty)
     @FindBy(xpath = "//span[contains(@class, 'shopping_cart_badge')]")
-    WebElement emptyCartButtonFromInventoryPage;
+    WebElement shoppingCartBadge;
 
 //    get Backpack remove button
     @FindBy(xpath = "//button[contains(@id, 'remove-sauce-labs-backpack')]")
-    WebElement getBackpackRemoveButton;
+    WebElement itemRemoveButton;
 //    get Cart button
     @FindBy(xpath = "//div[contains(@class, 'shopping_cart_container')]")
-    WebElement getCartButton;
+    WebElement cartButton;
 
-    public void addToCartBackpackFromInventoryClick() {
-        addToCartBackpackFromInventoryPage.click();
+    @FindBy(xpath = "//div[@class='inventory_item']")
+    List<WebElement> itemsList;
+
+
+
+    By itemNameTextLocator = By.xpath("//div[contains(@class, 'inventory_item_name')]");
+    By itemDescriptionTextLocator = By.xpath("//div[contains(@class, 'inventory_item_desc')]");
+    By addToCartBtnLocator = By.xpath("//button[contains(@class, 'btn_inventory') and contains(@class, 'btn_primary')]");
+
+    @FindBy(xpath = "//div[contains(@class, 'inventory_item_price')]")
+    WebElement itemPriceText;
+
+    public WebElement getItemWebElementByName(String itemName) {
+        for (WebElement item : itemsList) {
+            String currentItemName = item.findElement(itemNameTextLocator).getText();
+            if (itemName.equals(currentItemName)) {
+                return  item;
+            }
+        }
+        return null;
     }
 
-//    public String getBackpackNameFromInventory() {
-//        return getBackpackNameFromInventoryPage.getText();
-//    }
-//
-//    public String getBackpackDescriptionFromInventory() {
-//        return getBackpackDescriptionFromInventoryPage.getText();
-//    }
-//
-//    public String getBackpackPriceFromInventory() {
-//        return getBackpackPriceFromInventoryPage.getText();
-//    }
+    public void addItemToCart(String itemName) {
+        WebElement addToCartBtn = getItemWebElementByName(itemName).findElement(addToCartBtnLocator);
+        addToCartBtn.click();
+    }
 
-    public boolean emptyCartButtonDisplayed() {
-        return emptyCartButtonFromInventoryPage.isDisplayed();
+    public String getBackpackNameFromInventory(String itemName) {
+        return getItemWebElementByName(itemName).findElement(itemNameTextLocator).getText();
+    }
+
+    public String getBackpackDescriptionFromInventory(String itemName) {
+        return getItemWebElementByName(itemName).findElement(itemDescriptionTextLocator).getText();
+    }
+
+    public String getBackpackPriceFromInventory() {
+        return itemPriceText.getText();
+    }
+
+    public boolean isCartBadgeDisplayed() {
+        try {
+            return shoppingCartBadge.isDisplayed();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
     }
 
     public String getCartItemsNumber() {
-        return emptyCartButtonFromInventoryPage.getText();
+        return shoppingCartBadge.getText();
     }
 
     public String getBackpackRemoveButtonText() {
-       return getBackpackRemoveButton.getText();
+       return itemRemoveButton.getText();
     }
 
     public boolean getBackpackRemoveButtonDisplayed() {
-        return getBackpackRemoveButton.isDisplayed();
+        return itemRemoveButton.isDisplayed();
     }
 
     public void clickCartButton() {
-        getCartButton.click();
+        cartButton.click();
     }
 
 // Convert item price from String/text to int
