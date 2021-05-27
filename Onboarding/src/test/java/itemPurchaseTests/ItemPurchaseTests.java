@@ -18,6 +18,7 @@ import steps.YourCartSteps;
 // Am adaugat linia asta
 // Am adaugat si linia asta, 3rd push
 // Am adaugat linia asta pentru Onboarding Branch
+// Am adaugat inca o linie...
 
 @RunWith(SerenityRunner.class)
 public class ItemPurchaseTests {
