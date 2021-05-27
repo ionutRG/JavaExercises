@@ -16,7 +16,7 @@ public class LoginSteps extends StepsBase {
 
 // ***** Verify Standard/LockedOut/Problem/Performance/Empty users urls are correct
     @Step ("Expected: Users urls are correct")
-    public  void verifyUsernameUrlsAreCorrect(String expectedUrl) {
+    public  void verifyCurrentUrlIsCorrect(String expectedUrl) {
         assertThat(loginPage.getCurrentUrl(), is(expectedUrl));
     }
 

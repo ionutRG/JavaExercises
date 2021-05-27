@@ -10,22 +10,22 @@ public class ItemPurchaseSteps extends StepsBase {
 
     @Step ("Expected: Backpack item name is correct: {0}")
     public void verifyBackpackName(String expectedName) {
-        assertThat("Backpack name is:", inventoryPage.getBackpackNameFromInventory(expectedName), is(expectedName));
+        assertThat("Backpack name is:", inventoryPage.getBackpackName(expectedName), is(expectedName));
     }
 
     @Step ("Expected: Backpack item description is correct: {0}")
-    public void verifyBackpackDescription(String itemName, String expectedDesc) {
-        assertThat("Backpack description is: ", inventoryPage.getBackpackDescriptionFromInventory(itemName), is(expectedDesc));
+    public void verifyBackpackDescription(String expectedDesc) {
+        assertThat("Backpack description is: ", inventoryPage.getBackpackDescription(expectedDesc), is(expectedDesc));
     }
 
     @Step ("Expected: Backpack item price is correct: {0}")
     public void verifyBackpackPrice(String expectedPrice) {
-        assertThat("Backpack price is: ", inventoryPage.getBackpackPriceFromInventory(), is(expectedPrice));
+        assertThat("Backpack price is: ", inventoryPage.getBackpackPrice(), is(expectedPrice));
     }
 
-    @Step ("Expected: Cart is empty? {0}")
+    @Step ("Expected: Is Cart empty?")
     public void verifyCartIsEmpty() {
-        assertThat("Cart is empty", inventoryPage.isCartBadgeDisplayed(), is(false));
+        assertThat("Cart is empty", inventoryPage.isCartBadgeVisible(), is(false));
     }
 
     @Step ("Expected: REMOVE button for Backpack exists:")

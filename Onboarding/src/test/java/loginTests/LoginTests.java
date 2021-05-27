@@ -50,7 +50,7 @@ public class LoginTests {
         //login user to site
         loginSteps.login(userStandard.getUsername(), userStandard.getPassword());
         //expected results:
-        loginSteps.verifyUsernameUrlsAreCorrect("https://www.saucedemo.com/inventory.html");
+        loginSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/inventory.html");
     }
 
     @Test
@@ -61,7 +61,7 @@ public class LoginTests {
         //login user to site
         loginSteps.login(userLockedOut.getUsername(), userLockedOut.getPassword());
         //expected results:
-        loginSteps.verifyUsernameUrlsAreCorrect("https://www.saucedemo.com/");
+        loginSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/");
         loginSteps.verifyEmptyAndLockedOutUserErrorMessage("Epic sadface: Sorry, this user has been locked out.");
     }
 
@@ -73,7 +73,7 @@ public class LoginTests {
         //login user to site
         loginSteps.login(userProblem.getUsername(), userProblem.getPassword());
         //expected results:
-        loginSteps.verifyUsernameUrlsAreCorrect("https://www.saucedemo.com/inventory.html");
+        loginSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/inventory.html");
         loginSteps.verifyProblemUserElement(true);
     }
 
@@ -85,7 +85,7 @@ public class LoginTests {
         //login user to site
         loginSteps.login(userPerformance.getUsername(), userPerformance.getPassword());
         //expected results:
-        loginSteps.verifyUsernameUrlsAreCorrect("https://www.saucedemo.com/inventory.html");
+        loginSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/inventory.html");
     }
 
     @Test
@@ -96,7 +96,7 @@ public class LoginTests {
         //login user to site
         loginSteps.login(userEmpty.getUsername(), userEmpty.getPassword());
         //expected results:
-        loginSteps.verifyUsernameUrlsAreCorrect("https://www.saucedemo.com/");
+        loginSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/");
         loginSteps.verifyEmptyAndLockedOutUserErrorMessage("Epic sadface: Username is required");
     }
 }

@@ -1,30 +1,51 @@
 package pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import java.util.List;
 
-public class CheckoutOverviewPageObject {
-    @FindBy(xpath = "//div[contains(@class, 'inventory_item_price')]")
-    WebElement getItemPriceOnCheckoutOverviewPage;
+public class CheckoutOverviewPageObject extends PageObjectBase {
+    @FindBy(xpath = "//button[contains(@id, 'finish')]")
+    WebElement finishButton;
 
-    @FindBy(xpath = "//div[contains(@class, 'summary_subtotal_label')]")
-    WebElement getTotalPriceOnCheckoutOverviewPage;
+    @FindBy(xpath = "//div[contains(@class, 'summary_info')]")
+    List<WebElement> checkoutLabelList;
 
-    @FindBy(xpath = "//button[contains(@class, 'btn btn_action btn_medium cart_button')]")
-    WebElement clickOnFinishButtonOnCheckoutOverviewPage;
+    By labelInfoTextLocator = By.xpath("//div[contains(@class, 'summary_info_label')]");
+    By labelValueTextLocator =  By.xpath("//div[contains(@class, 'summary_value_label')]");
 
-    public String getItemsPrice() {
-        return getItemPriceOnCheckoutOverviewPage.getText();
+    public WebElement getInfoLabel(String labelInfo) {
+        for (WebElement label : checkoutLabelList) {
+            String currentLabelInfo = label.findElement(labelInfoTextLocator).getText();
+            if (labelInfo.equals(currentLabelInfo)) {
+                return label;
+            }
+        }
+        return null;
     }
 
-    public String getTotalPrice() {
-        return getTotalPriceOnCheckoutOverviewPage.getText();
+    public WebElement getInfoLabelValues(String labelValue) {
+        for (WebElement label : checkoutLabelList) {
+            String currentLabelValue =  label.findElement(labelValueTextLocator).getText();
+            if (labelValue.equals(currentLabelValue)) {
+                return label;
+            }
+        }
+        return null;
     }
 
-    public void clickOnFinish() {
-        clickOnFinishButtonOnCheckoutOverviewPage.click();
+    public String getLabelInfo(String labelInfo) {
+        return getInfoLabel(labelInfo).findElement(labelInfoTextLocator).getText();
     }
 
+    public String getLabelValue(String labelValue) {
+        return getInfoLabelValues(labelValue).findElement(labelValueTextLocator).getText();
+    }
+
+    public void clickFinish() {
+        finishButton.click();
+    }
 
 
 }

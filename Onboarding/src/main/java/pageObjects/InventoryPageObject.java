@@ -1,16 +1,16 @@
 package pageObjects;
 
+import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import java.util.List;
 
 public class InventoryPageObject extends PageObjectBase {
 
 //    get cart button item number badge (when NOT empty)
     @FindBy(xpath = "//span[contains(@class, 'shopping_cart_badge')]")
-    WebElement shoppingCartBadge;
+    WebElementFacade shoppingCartBadge;
 
 //    get Backpack remove button
     @FindBy(xpath = "//button[contains(@id, 'remove-sauce-labs-backpack')]")
@@ -22,10 +22,8 @@ public class InventoryPageObject extends PageObjectBase {
     @FindBy(xpath = "//div[@class='inventory_item']")
     List<WebElement> itemsList;
 
-
-
     By itemNameTextLocator = By.xpath("//div[contains(@class, 'inventory_item_name')]");
-    By itemDescriptionTextLocator = By.xpath("//div[contains(@class, 'inventory_item_desc')]");
+    By itemDescriptionTextLocator = By.xpath("//div[contains(@class, 'inventory_item_desc') and not (contains(@class, 'inventory_item_description'))]");
     By addToCartBtnLocator = By.xpath("//button[contains(@class, 'btn_inventory') and contains(@class, 'btn_primary')]");
 
     @FindBy(xpath = "//div[contains(@class, 'inventory_item_price')]")
@@ -41,30 +39,42 @@ public class InventoryPageObject extends PageObjectBase {
         return null;
     }
 
+    public WebElement getItemWebElementByDescription(String itemDescr) {
+        for (WebElement item : itemsList) {
+            String currentItemDescr = item.findElement(itemDescriptionTextLocator).getText();
+            if (itemDescr.equals(currentItemDescr)) {
+                return  item;
+            }
+        }
+        return null;
+    }
+
     public void addItemToCart(String itemName) {
         WebElement addToCartBtn = getItemWebElementByName(itemName).findElement(addToCartBtnLocator);
         addToCartBtn.click();
     }
 
-    public String getBackpackNameFromInventory(String itemName) {
+    public String getBackpackName(String itemName) {
         return getItemWebElementByName(itemName).findElement(itemNameTextLocator).getText();
     }
 
-    public String getBackpackDescriptionFromInventory(String itemName) {
-        return getItemWebElementByName(itemName).findElement(itemDescriptionTextLocator).getText();
+    public String getBackpackDescription(String itemDescr) {
+        return getItemWebElementByDescription(itemDescr).findElement(itemDescriptionTextLocator).getText();
     }
 
-    public String getBackpackPriceFromInventory() {
+    public String getBackpackPrice() {
         return itemPriceText.getText();
     }
 
-    public boolean isCartBadgeDisplayed() {
-        try {
-            return shoppingCartBadge.isDisplayed();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return false;
+    public boolean isCartBadgeVisible() {
+//        if using isDisplayed, exception will be thrown; only handled with try/catch
+//        try {
+//            return shoppingCartBadge.isDisplayed();
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+//        return false;
+        return shoppingCartBadge.isVisible();
     }
 
     public String getCartItemsNumber() {
@@ -82,18 +92,4 @@ public class InventoryPageObject extends PageObjectBase {
     public void clickCartButton() {
         cartButton.click();
     }
-
-// Convert item price from String/text to int
-//    public int convertPriceFromTextToInt() {
-//        int itemPriceInt;
-//        itemPriceInt = Integer.valueOf(getBackpackFromInventory());
-//        return itemPriceInt;
-//    }
-//
-//    public List listItemPricesAsList() {
-//        List itemPrices = new ArrayList();
-//        itemPrices.get(convertPriceFromTextToInt());
-//        System.out.println(itemPrices);
-//        return itemPrices;
-//    }
 }
