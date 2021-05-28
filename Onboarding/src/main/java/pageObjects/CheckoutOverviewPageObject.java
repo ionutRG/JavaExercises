@@ -1,6 +1,5 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -16,12 +15,9 @@ public class CheckoutOverviewPageObject extends PageObjectBase {
     @FindBy(xpath = "//div[contains(@class, 'summary_value_label')]")
     List<WebElement> checkoutLabelValues;
 
-    By labelInfoLocator = By.xpath("//div[contains(@class, 'summary_info_label')]");
-    By labelValueLocator = By.xpath("//div[contains(@class, 'summary_value_label')]");
-
     public WebElement getInfoLabel(String labelInfo) {
         for (WebElement label : checkoutLabelList) {
-            String currentLabelInfo = label.findElement(labelInfoLocator).getText();
+            String currentLabelInfo = label.getText();
             if (labelInfo.equals(currentLabelInfo)) {
                 return label;
             }
@@ -29,20 +25,9 @@ public class CheckoutOverviewPageObject extends PageObjectBase {
         return null;
     }
 
-
-//    public WebElement getInfoLabel(String labelInfo) {
-//        for (WebElement label : checkoutLabelList) {
-//            String currentLabelInfo = label.findElement(labelInfoTextLocator).getText();
-//            if (labelInfo.equals(currentLabelInfo)) {
-//                return label;
-//            }
-//        }
-//        return null;
-//    }
-
     public WebElement getInfoLabelValues(String labelValue) {
         for (WebElement label : checkoutLabelValues) {
-            String currentLabelValue = label.findElement(labelValueLocator).getText();
+            String currentLabelValue = label.getText();
             if (labelValue.equals(currentLabelValue)) {
                 return label;
             }
@@ -51,11 +36,11 @@ public class CheckoutOverviewPageObject extends PageObjectBase {
     }
 
     public String getLabelInfo(String labelTitle) {
-        return getInfoLabel(labelTitle).findElement(labelInfoLocator).getText();
+        return getInfoLabel(labelTitle).getText();
     }
 
     public String getLabelValue(String labelText) {
-        return getInfoLabelValues(labelText).findElement(labelValueLocator).getText();
+        return getInfoLabelValues(labelText).getText();
     }
 
     public void clickFinish() {

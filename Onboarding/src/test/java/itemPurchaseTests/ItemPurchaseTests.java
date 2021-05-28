@@ -184,17 +184,17 @@ public class ItemPurchaseTests {
         //check CHECKOUT OVERVIEW DESCRIPTION label text
         baseSteps.verifyYourCartDescrLabel("DESCRIPTION");
 
-//        //check Payment Information label info text
-//        checkoutOverviewSteps.verifyPaymentInfoText("Payment Information:");
-//
-//        //check Payment Information label value text
-//        checkoutOverviewSteps.verifyPaymentInfoValue("SauceCard #31337");
-//
-//        //check Shipping Information label info text
-//        checkoutOverviewSteps.verifyShippingInfoText("Shipping Information:");
-//
-//        //check Shipping Information label info text
-//        checkoutOverviewSteps.verifyShippingInfoValue("FREE PONY EXPRESS DELIVERY!");
+        //check Payment Information label info text
+        checkoutOverviewSteps.verifyPaymentInfoText("Payment Information:");
+
+        //check Payment Information label value text
+        checkoutOverviewSteps.verifyPaymentInfoValue("SauceCard #31337");
+
+        //check Shipping Information label info text
+        checkoutOverviewSteps.verifyShippingInfoText("Shipping Information:");
+
+        //check Shipping Information label info text
+        checkoutOverviewSteps.verifyShippingInfoValue("FREE PONY EXPRESS DELIVERY!");
 
         //check Item total element
 
