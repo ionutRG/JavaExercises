@@ -102,6 +102,9 @@ public class ItemPurchaseTests {
 
 
 //*****     YOUR CART PAGE
+        //check Cart URL is correct
+        loginSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/cart.html");
+
         //check Your Cart header
         baseSteps.verifyHeaderGenericCart();
 
@@ -138,11 +141,12 @@ public class ItemPurchaseTests {
         //go to CHECKOUT
         yourCartSteps.clickCheckoutButton();
 
+
+//*****     CHECKOUT: YOUR INFORMATION Page
+
         //expected results: CHECKOUT URL is correct
         loginSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/checkout-step-one.html");
 
-
-//*****     CHECKOUT: YOUR INFORMATION Page
         //check CHECKOUT Your Information header
         baseSteps.verifyHeaderGenericCart();
 
@@ -154,6 +158,12 @@ public class ItemPurchaseTests {
 
         //enter User details for Checkout: first name, last name, zip code
         checkoutYourInfoSteps.enterDetails(userStandard.getFirstName(), userStandard.getLastName(), userStandard.getZipCode());
+
+        //check CONTINUE button
+        checkoutYourInfoSteps.verifyContinueBtn();
+
+//        //check CONTINUE button text
+//        checkoutYourInfoSteps.verifyContinueBtnText("CONTINUE");
 
         //go to CONTINUE
         checkoutYourInfoSteps.clickContinueButton();
@@ -174,17 +184,17 @@ public class ItemPurchaseTests {
         //check CHECKOUT OVERVIEW DESCRIPTION label text
         baseSteps.verifyYourCartDescrLabel("DESCRIPTION");
 
-        //check Payment Information label info text
-        checkoutOverviewSteps.verifyPaymentInfoText("Payment Information:");
-
-        //check Payment Information label value text
-        checkoutOverviewSteps.verifyPaymentInfoValue("SauceCard #31337");
-
-        //check Shipping Information label info text
-        checkoutOverviewSteps.verifyShippingInfoText("Payment Information:");
-
-        //check Shipping Information label info text
-        checkoutOverviewSteps.verifyShippingInfoValue("FREE PONY EXPRESS DELIVERY!");
+//        //check Payment Information label info text
+//        checkoutOverviewSteps.verifyPaymentInfoText("Payment Information:");
+//
+//        //check Payment Information label value text
+//        checkoutOverviewSteps.verifyPaymentInfoValue("SauceCard #31337");
+//
+//        //check Shipping Information label info text
+//        checkoutOverviewSteps.verifyShippingInfoText("Shipping Information:");
+//
+//        //check Shipping Information label info text
+//        checkoutOverviewSteps.verifyShippingInfoValue("FREE PONY EXPRESS DELIVERY!");
 
         //check Item total element
 
@@ -195,8 +205,6 @@ public class ItemPurchaseTests {
 
         //check CHECKOUT COMPLETE URL is correct
         loginSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/checkout-complete.html");
-
-
 
 
     }

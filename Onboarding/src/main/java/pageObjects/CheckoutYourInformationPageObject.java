@@ -1,10 +1,7 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 public class CheckoutYourInformationPageObject extends PageObjectBase {
     @FindBy(id = "first-name")
@@ -16,12 +13,14 @@ public class CheckoutYourInformationPageObject extends PageObjectBase {
     @FindBy(id = "postal-code")
     WebElement postalCodeField;
 
-    @FindBy(xpath = "//input[contains(@id, 'continue')]")
-    WebElement clickOnContinueButton;
+    @FindBy(xpath = "//div[@class='checkout_buttons']/input[@id='continue']")
+    WebElement continueButton;
+
+//    @FindBy(xpath = "//input[contains(@id, 'continue')]")
+//    WebElement continueButton;
 
     @FindBy(xpath = "//div[contains(@class, 'checkout_info')]")
     WebElement getUserDetails;
-
 
 
     public void enterUserDetails(String fName, String lName, String zipCode) {
@@ -31,15 +30,22 @@ public class CheckoutYourInformationPageObject extends PageObjectBase {
     }
 
     public void clickContinue() {
-        clickOnContinueButton.click();
+        continueButton.click();
+    }
+
+    public boolean continueBtnExists() {
+        continueButton.isDisplayed();
+        return true;
+    }
+
+    public String continueBtnText() {
+        continueButton.getAttribute("value");
+        return null;
     }
 
     public boolean verifyUserDetailsBox() {
         return getUserDetails.isDisplayed();
     }
-
-
-
 
 
 }
