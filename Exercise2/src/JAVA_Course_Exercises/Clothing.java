@@ -1,11 +1,10 @@
 package JAVA_Course_Exercises;
 
-public class Clothing {
+public class Clothing implements Comparable<Clothing> {
     private String description;
     private double price;
     private String size;
-
-    public static final double MIN_PRICE = 39.99;
+    public static final double MIN_PRICE = 9.99;
     public static final double TAX_RATE = 0.2; //between (0, 1)
 //    If TAX_RATE private, as below, it CANNOT be accessed from other classes
 //    Clothing.TAX_RATE cannot be used from other classes if private
@@ -26,8 +25,12 @@ public class Clothing {
         this.description = description;
     }
 
-    public double getPrice() {
+    public double getPriceWithTax() {
         return price + (price * TAX_RATE);
+    }
+
+    public double getPriceWithoutTax() {
+        return price;
     }
 
     public void setPrice(double price) {
@@ -40,5 +43,15 @@ public class Clothing {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    @Override
+    public String toString() {
+        return getDescription() + ", " + getSize() + ", " + getPriceWithoutTax();
+    }
+
+    @Override
+    public int compareTo(Clothing compare) {
+        return this.description.compareTo(compare.description);
     }
 }

@@ -5,7 +5,7 @@ public class Customer {
     private String size;
     private Clothing[] items;
     private int measurement;
-    
+
 
     public Customer(String name, int measurement) {
         this.name = name;
@@ -23,19 +23,9 @@ public class Customer {
     public double getTotalClothingCost() {
         double total = 0.0;
         for (Clothing item : items) {
-            System.out.println("//Am intrat in for cu item: " + item.getDescription() + " size: " + item.getSize());
-//            if (c1.getSize().equals(item.getSize())) {
-            System.out.println("//Am gasit item de acceasi marime: " + item.getSize() + item.getDescription() + " cu pret: " + item.getPrice());
-            total = total + item.getPrice();
-//                total = total + total * tax;
-            System.out.println("Total: " + total);
-
-//            if (total > 30) {
-//                System.out.println("//Totalul este mai mare decat 30");
-//                System.out.println("Item details: " + item.getDescription() + ", of size: " + item.getSize() + " and price: " + item.getPrice());
-//                break;
-//            }
-//            }
+//            System.out.println("//Am intrat in for cu item: " + item.getDescription() + ", size: " + item.getSize() + " and price: " + item.getPrice());
+            total += item.getPriceWithTax();
+//            System.out.println("Total: " + total);
         }
         return total;
     }
@@ -56,9 +46,7 @@ public class Customer {
         this.size = size;
     }
 
-
     public void setSize(int measurement) {
-//  measurement 123 = S, 456 = M, 789 = L, default = X; could NOT use case 1, 2, 3!!!
         switch (measurement) {
             case 1:
             case 2:
