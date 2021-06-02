@@ -2,28 +2,30 @@ package entities;
 
 
 public class Product {
-    private String name;
-    private String description;
-    private String price;
+	private String name;
+	private String description;
+	private String price;
 
-    public Product(String itemName, String itemDescription, String itemPrice) {
-        this.name = itemName;
-        this.description = itemDescription;
-        this.price = itemPrice;
-    }
+	public Product(String itemName, String itemDescription, String itemPrice) {
+		this.name = itemName;
+		this.description = itemDescription;
+		this.price = itemPrice;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public String getPrice() {
-        return price;
-    }
+	public String getPrice() {
+		return price;
+	}
 
+
+	//todo remove all webdriver references from entities classes
 
 //    public static WebElement createProductsListAsString () {
 //        String products =
@@ -39,13 +41,13 @@ public class Product {
 //        return priceWithoutDollar;
 //    }
 
+	//todo any initialization of objects has to be done outside the entity class
+	//the below exemple was ok for exercice, but will not be acceptable in project work
 
 //    Product[] items = {
 //            new Product(getProductsItemNameList()),
 //            new Product()
 //    }
-
-
 
 
 }
