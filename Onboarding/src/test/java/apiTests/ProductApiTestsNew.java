@@ -12,7 +12,7 @@ import steps.ProductApiStepsNew;
 @RunWith(SerenityRunner.class)
 public class ProductApiTestsNew {
 
-    private static Logger log = LoggerFactory.getLogger(ProductApiTests.class);
+    private static Logger log = LoggerFactory.getLogger(ProductApiTestsNew.class);
 
     @Steps
     ProductApiStepsNew productStepsNew;

@@ -41,6 +41,9 @@ public class ItemPurchaseTests {
     @Steps
     CheckoutYourInformationSteps checkoutYourInfoSteps;
 
+    @Steps
+    CheckoutCartBaseSteps cartBaseSteps;
+
 
     @Before
     public void setupInventory() {
@@ -69,12 +72,12 @@ public class ItemPurchaseTests {
         loginSteps.login(userStandard.getUsername(), userStandard.getPassword());
 
         //expected results: INVENTORY URL is correct
-        loginSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/inventory.html");
+        baseSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/inventory.html");
 
 
 //*****         INVENTORY PAGE/MAIN PAGE
         //expected results: check if cart is empty
-        itemPurchaseSteps.verifyCartIsEmpty();
+        itemPurchaseSteps.isCartIsEmpty();
 
         //check if Backpack item name is correct
         itemPurchaseSteps.verifyBackpackName(itemBackpack.getName());
@@ -89,7 +92,7 @@ public class ItemPurchaseTests {
         itemPurchaseSteps.addItemToCart(itemBackpack.getName());
 
         //verify Backpack successfully added to Cart
-        itemPurchaseSteps.verifyRemoveButtonIsPresent();
+        itemPurchaseSteps.isRemoveButtonPresent();
 
         //check BP added to cart: WebElement isDisplayed and text is REMOVE
         itemPurchaseSteps.verifyRemoveButtonText("REMOVE");
@@ -103,19 +106,19 @@ public class ItemPurchaseTests {
 
 //*****     YOUR CART PAGE
         //check Cart URL is correct
-        loginSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/cart.html");
+        baseSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/cart.html");
 
         //check Your Cart header
-        baseSteps.verifyHeaderGenericCart();
+        cartBaseSteps.verifyHeaderGenericCart();
 
         //check Your Cart header text
-        baseSteps.verifyYourCartHeaderText("YOUR CART");
+        cartBaseSteps.verifyYourCartHeaderText("YOUR CART");
 
         //check Your Cart QTY label text
-        baseSteps.verifyYourCartQtyLabel("QTY");
+        cartBaseSteps.verifyYourCartQtyLabel("QTY");
 
         //check Your Cart DESCRIPTION label text
-        baseSteps.verifyYourCartDescrLabel("DESCRIPTION");
+        cartBaseSteps.verifyYourCartDescrLabel("DESCRIPTION");
 
         //check Your Cart item names
         yourCartSteps.verifyYourCartItemName(itemBackpack.getName());
@@ -145,44 +148,40 @@ public class ItemPurchaseTests {
 //*****     CHECKOUT: YOUR INFORMATION Page
 
         //expected results: CHECKOUT URL is correct
-        loginSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/checkout-step-one.html");
+        baseSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/checkout-step-one.html");
 
         //check CHECKOUT Your Information header
-        baseSteps.verifyHeaderGenericCart();
+        cartBaseSteps.verifyHeaderGenericCart();
 
         //check CHECKOUT YOUR INFORMATION header text
-        baseSteps.verifyYourCartHeaderText("CHECKOUT: YOUR INFORMATION");
+        cartBaseSteps.verifyYourCartHeaderText("CHECKOUT: YOUR INFORMATION");
 
         //check User details box
-        checkoutYourInfoSteps.verifyUserDetails();
-
-        //enter User details for Checkout: first name, last name, zip code
-        checkoutYourInfoSteps.enterDetails(userStandard.getFirstName(), userStandard.getLastName(), userStandard.getZipCode());
+        checkoutYourInfoSteps.isUserDetailsBoxDisplayed();
 
         //check CONTINUE button
-        checkoutYourInfoSteps.verifyContinueBtn();
+        checkoutYourInfoSteps.isContinueButtonDisplayed();
 
-//        //check CONTINUE button text
-//        checkoutYourInfoSteps.verifyContinueBtnText("CONTINUE");
+        //enter User details for Checkout: first name, last name, zip code
+        checkoutYourInfoSteps.enterUserDetails(userStandard.getFirstName(), userStandard.getLastName(), userStandard.getZipCode());
 
-        //go to CONTINUE
-        checkoutYourInfoSteps.clickContinueButton();
-
-        //expected results: CHECKOUT OVERVIEW URL is correct
-        loginSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/checkout-step-two.html");
 
 //*****     CHECKOUT: OVERVIEW Page
+
+        //expected results: CHECKOUT OVERVIEW URL is correct
+        baseSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/checkout-step-two.html");
+
         // check CHECKOUT OVERVIEW header
-        baseSteps.verifyHeaderGenericCart();
+        cartBaseSteps.verifyHeaderGenericCart();
 
         //check CHECKOUT OVERVIEW header text
-        baseSteps.verifyYourCartHeaderText("CHECKOUT: OVERVIEW");
+        cartBaseSteps.verifyYourCartHeaderText("CHECKOUT: OVERVIEW");
 
         //check CHECKOUT OVERVIEW QTY label text
-        baseSteps.verifyYourCartQtyLabel("QTY");
+        cartBaseSteps.verifyYourCartQtyLabel("QTY");
 
         //check CHECKOUT OVERVIEW DESCRIPTION label text
-        baseSteps.verifyYourCartDescrLabel("DESCRIPTION");
+        cartBaseSteps.verifyYourCartDescrLabel("DESCRIPTION");
 
         //check Payment Information label info text
         checkoutOverviewSteps.verifyPaymentInfoText("Payment Information:");
@@ -204,7 +203,7 @@ public class ItemPurchaseTests {
         checkoutOverviewSteps.clickFinishButton();
 
         //check CHECKOUT COMPLETE URL is correct
-        loginSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/checkout-complete.html");
+        baseSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/checkout-complete.html");
 
 
     }

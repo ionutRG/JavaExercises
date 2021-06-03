@@ -7,36 +7,29 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class LoginSteps extends StepsBase {
-	LoginPageObject loginPage;
+    LoginPageObject loginPage;
 
-	//Login method for {0} = username and {1} = password
-	@Step("Enter credentials in boxes with username {0} and password {1}")
-	public void login(String username, String password) {
-		loginPage.loginUser(username, password);
-	}
+    //Login method for {0} = username and {1} = password
+    @Step("Enter credentials in boxes with username {0} and password {1}")
+    public void login(String username, String password) {
+        loginPage.loginUser(username, password);
+    }
+	
 
-	// ***** Verify Standard/LockedOut/Problem/Performance/Empty users urls are correct
-	//todo since this is a method you use on different pages, it means that can be ove to generic methods on StepBase
-	// and calling the getCurrentUrl() method directly from PageObjectBase object
-	@Step("Expected: URL is correct: {0}")
-	public void verifyCurrentUrlIsCorrect(String expectedUrl) {
-		assertThat(loginPage.getCurrentUrl(), is(expectedUrl));
-	}
+    @Step("Expected: User is a Locked Out user and cannot log in.\nUser remains on Login page with getEmptyAndLockedOutErrorMessage: {0}")
+    public void verifyEmptyAndLockedOutUserErrorMessage(String expectedErrorMessage) {
+        assertThat("User is not prompted with error", loginPage.getEmptyAndLockedOutErrorMessage(), is(expectedErrorMessage));
+    }
 
-	@Step("Expected: User is a Locked Out user and cannot log in.\nUser remains on Login page with getEmptyAndLockedOutErrorMessage: {0}")
-	public void verifyEmptyAndLockedOutUserErrorMessage(String expectedErrorMessage) {
-		assertThat("User is not prompted with error", loginPage.getEmptyAndLockedOutErrorMessage(), is(expectedErrorMessage));
-	}
+    @Step("Expected: User is NOT logged in - Problem User with problemUserElement: {0}")
+    public void verifyProblemUserElement(boolean problemUserElement) {
+        assertThat("User is a Problem user and", loginPage.getProblemUserElement(), is(problemUserElement));
+    }
 
-	@Step("Expected: User is NOT logged in - Problem User with problemUserElement: {0}")
-	public void verifyProblemUserElement(boolean problemUserElement) {
-		assertThat("User is a Problem user and", loginPage.getProblemUserElement(), is(problemUserElement));
-	}
-
-	// ***** PARAMETERIZED RUN: Username and password using array Error message check
-	@Step("Expected: PARAMETRIZED RUN, error message check! - Empty/LockedOut user with EmptyLockedOutErrorMessage: {0}")
-	public void emptyAndLockedOutUserErrorCheck(String emptyLockedOutErrorMessage) {
-		assertThat("User is a PARAMETRIZED LockedOut user and", loginPage.getEmptyAndLockedOutErrorMessage(), is(emptyLockedOutErrorMessage));
-	}
+    // ***** PARAMETERIZED RUN: Username and password using array Error message check
+    @Step("Expected: PARAMETRIZED RUN, error message check! - Empty/LockedOut user with EmptyLockedOutErrorMessage: {0}")
+    public void emptyAndLockedOutUserErrorCheck(String emptyLockedOutErrorMessage) {
+        assertThat("User is a PARAMETRIZED LockedOut user and", loginPage.getEmptyAndLockedOutErrorMessage(), is(emptyLockedOutErrorMessage));
+    }
 
 }

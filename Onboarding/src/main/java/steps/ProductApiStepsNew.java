@@ -3,6 +3,8 @@ package steps;
 import apis.ProductRequestsNew;
 import io.restassured.response.Response;
 import net.thucydides.core.annotations.Step;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -10,6 +12,9 @@ import static org.junit.Assert.assertThat;
 public class ProductApiStepsNew extends StepsBase {
     Response response;
     ProductRequestsNew productApiNew = new ProductRequestsNew();
+
+    private static Logger log = LoggerFactory.getLogger(ProductApiStepsNew.class);
+
 
     @Step("Get all products")
     public void getAllProducts() {

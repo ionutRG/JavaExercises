@@ -25,12 +25,12 @@ public class ItemPurchaseSteps extends StepsBase {
     }
 
     @Step("Expected: Is Cart empty?")
-    public void verifyCartIsEmpty() {
+    public void isCartIsEmpty() {
         assertThat("Cart is empty", inventoryPage.isCartBadgeVisible(), is(false));
     }
 
     @Step("Expected: REMOVE button for Backpack exists")
-    public void verifyRemoveButtonIsPresent() {
+    public void isRemoveButtonPresent() {
         assertThat("REMOVE for BP exists", inventoryPage.getBackpackRemoveButtonDisplayed(), is(true));
     }
 
