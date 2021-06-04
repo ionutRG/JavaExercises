@@ -42,6 +42,9 @@ public class ItemPurchaseTests {
     CheckoutYourInformationSteps checkoutYourInfoSteps;
 
     @Steps
+    CheckoutCartCompleteSteps checkoutCompleteSteps;
+
+    @Steps
     CheckoutCartBaseSteps cartBaseSteps;
 
 
@@ -109,7 +112,7 @@ public class ItemPurchaseTests {
         baseSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/cart.html");
 
         //check Your Cart header
-        cartBaseSteps.verifyHeaderGenericCart();
+        cartBaseSteps.isGenericCartHeaderDisplayed();
 
         //check Your Cart header text
         cartBaseSteps.verifyYourCartHeaderText("YOUR CART");
@@ -151,16 +154,16 @@ public class ItemPurchaseTests {
         baseSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/checkout-step-one.html");
 
         //check CHECKOUT Your Information header
-        cartBaseSteps.verifyHeaderGenericCart();
+        cartBaseSteps.isGenericCartHeaderDisplayed();
 
         //check CHECKOUT YOUR INFORMATION header text
         cartBaseSteps.verifyYourCartHeaderText("CHECKOUT: YOUR INFORMATION");
 
         //check User details box
-        checkoutYourInfoSteps.isUserDetailsBoxDisplayed();
+        checkoutYourInfoSteps.verifyUserDetailsBoxDisplayed();
 
         //check CONTINUE button
-        checkoutYourInfoSteps.isContinueButtonDisplayed();
+        checkoutYourInfoSteps.verifyContinueButtonDisplayed();
 
         //enter User details for Checkout: first name, last name, zip code
         checkoutYourInfoSteps.enterUserDetails(userStandard.getFirstName(), userStandard.getLastName(), userStandard.getZipCode());
@@ -172,7 +175,7 @@ public class ItemPurchaseTests {
         baseSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/checkout-step-two.html");
 
         // check CHECKOUT OVERVIEW header
-        cartBaseSteps.verifyHeaderGenericCart();
+        cartBaseSteps.isGenericCartHeaderDisplayed();
 
         //check CHECKOUT OVERVIEW header text
         cartBaseSteps.verifyYourCartHeaderText("CHECKOUT: OVERVIEW");
@@ -195,16 +198,40 @@ public class ItemPurchaseTests {
         //check Shipping Information label info text
         checkoutOverviewSteps.verifyShippingInfoValue("FREE PONY EXPRESS DELIVERY!");
 
-        //check Item total element
-
-        //check Item total calculated correctly
-
         //click FINISH button
         checkoutOverviewSteps.clickFinishButton();
+
+
+//*****     CHECKOUT: COMPLETE Page
 
         //check CHECKOUT COMPLETE URL is correct
         baseSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/checkout-complete.html");
 
+        //check Cart header is displayed
+        cartBaseSteps.isGenericCartHeaderDisplayed();
 
+        //check Cart header text
+        cartBaseSteps.verifyYourCartHeaderText("CHECKOUT: COMPLETE!");
+
+        //check Thanks text
+        checkoutCompleteSteps.verifyThanksText("THANK YOU FOR YOUR ORDER");
+
+        //check dispatched text
+        checkoutCompleteSteps.verifyDispatchGenericCartText("Your order has been dispatched, and will arrive just as fast as the pony can get there!");
+
+        //check Pony express image
+        checkoutCompleteSteps.verifyCompleteImageDisplayed();
+
+        //check Back Home button displayed
+        checkoutCompleteSteps.isBackHomeBtnDisplayed();
+
+        //check Back Home button text
+        checkoutCompleteSteps.verifyBackHomeBtnText("Back Home");
+
+        //click Back Home button
+        checkoutCompleteSteps.clickBackHome();
+
+        //check URL is correct
+        baseSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/inventory.html");
     }
 }

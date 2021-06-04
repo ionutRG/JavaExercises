@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class CheckoutOverviewPageObject extends PageObjectBase {
+public class CheckoutOverviewPO extends PageObjectBase {
     @FindBy(xpath = "//button[contains(@id, 'finish')]")
     WebElement finishButton;
 
@@ -25,10 +25,6 @@ public class CheckoutOverviewPageObject extends PageObjectBase {
         return null;
     }
 
-    //todo you already have a method were you get the label object
-    // to get the label value for a specific object you need to call the above getInfoLabel
-    // and on the returned WebElement search the value and return its text
-    // You don't need to duplicate the code
     public WebElement getInfoLabelValues(String labelValue) {
         for (WebElement label : checkoutLabelValues) {
             String currentLabelValue = label.getText();
@@ -39,11 +35,11 @@ public class CheckoutOverviewPageObject extends PageObjectBase {
         return null;
     }
 
-    public String getLabelInfo(String labelTitle) {
+    public String getLabelInfoText(String labelTitle) {
         return getInfoLabel(labelTitle).getText();
     }
 
-    public String getLabelValue(String labelText) {
+    public String getLabelValueText(String labelText) {
         return getInfoLabelValues(labelText).getText();
     }
 

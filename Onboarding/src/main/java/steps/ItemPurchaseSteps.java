@@ -1,13 +1,13 @@
 package steps;
 
 import net.thucydides.core.annotations.Step;
-import pageObjects.InventoryPageObject;
+import pageObjects.InventoryPO;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class ItemPurchaseSteps extends StepsBase {
-    InventoryPageObject inventoryPage;
+    InventoryPO inventoryPage;
 
     @Step("Expected: Backpack item name is correct: {0}")
     public void verifyBackpackName(String expectedName) {
@@ -31,7 +31,7 @@ public class ItemPurchaseSteps extends StepsBase {
 
     @Step("Expected: REMOVE button for Backpack exists")
     public void isRemoveButtonPresent() {
-        assertThat("REMOVE for BP exists", inventoryPage.getBackpackRemoveButtonDisplayed(), is(true));
+        assertThat("REMOVE for BP exists", inventoryPage.isBackpackRemoveButtonDisplayed(), is(true));
     }
 
     @Step("Expected: REMOVE button for Backpack has correct text: {0}")

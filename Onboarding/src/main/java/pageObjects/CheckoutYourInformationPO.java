@@ -3,7 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class CheckoutYourInformationPageObject extends PageObjectBase {
+public class CheckoutYourInformationPO extends PageObjectBase {
     @FindBy(id = "first-name")
     WebElement firstNameField;
 
@@ -26,7 +26,7 @@ public class CheckoutYourInformationPageObject extends PageObjectBase {
         continueButton.click();
     }
 
-    public boolean isContinueButton() {
+    public boolean isContinueButtonDisplayed() {
         //** EXCEPTION added!
         try {
             continueButton.isDisplayed();
@@ -46,7 +46,7 @@ public class CheckoutYourInformationPageObject extends PageObjectBase {
         return null;
     }
 
-    public boolean isUserDetailsBox() {
+    public boolean isUserDetailsBoxDisplayed() {
         //** EXCEPTION added!
         try {
             getUserDetails.isDisplayed();

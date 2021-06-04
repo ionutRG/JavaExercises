@@ -14,7 +14,7 @@ public class LoginSteps extends StepsBase {
     public void login(String username, String password) {
         loginPage.loginUser(username, password);
     }
-	
+
 
     @Step("Expected: User is a Locked Out user and cannot log in.\nUser remains on Login page with getEmptyAndLockedOutErrorMessage: {0}")
     public void verifyEmptyAndLockedOutUserErrorMessage(String expectedErrorMessage) {
@@ -23,7 +23,7 @@ public class LoginSteps extends StepsBase {
 
     @Step("Expected: User is NOT logged in - Problem User with problemUserElement: {0}")
     public void verifyProblemUserElement(boolean problemUserElement) {
-        assertThat("User is a Problem user and", loginPage.getProblemUserElement(), is(problemUserElement));
+        assertThat("User is a Problem user and", loginPage.isProblemUserElementDisplayed(), is(problemUserElement));
     }
 
     // ***** PARAMETERIZED RUN: Username and password using array Error message check

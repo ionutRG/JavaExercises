@@ -3,61 +3,47 @@ package pageObjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class YourCartPageObject extends PageObjectBase {
+public class CheckoutYourCartPO extends PageObjectBase {
 
-    //todo remane all webelements by removing "get" keyword. objects are always nouns and methods are verbs, get is used for methods names
+    //** renamed WebElement variables without get
 //    WebElement locators and field/variable set for each WebElement
     @FindBy(xpath = "//div[contains(@class, 'header_secondary_container')]")
-    WebElement getHeader;
+    WebElement cartHeader;
 
     @FindBy(xpath = "//div[contains(@class, 'inventory_item_name')]")
-    WebElement getItemName;
+    WebElement cartItemName;
 
     @FindBy(xpath = "//div[contains(@class, 'inventory_item_desc')]")
-    WebElement getItemDesc;
+    WebElement cartItemDesc;
 
     @FindBy(xpath = "//div[contains(@class, 'inventory_item_price')]")
-    WebElement getItemPrice;
+    WebElement cartItemPrice;
 
     @FindBy(xpath = "//button[contains(@id, 'remove-sauce-labs-backpack')]")
-    WebElement getItemRemoveButton;
+    WebElement itemRemoveButton;
 
     @FindBy(xpath = "//button[contains(@id, 'checkout')]")
-    WebElement getYourCartCheckoutButton;
-
-    //    WebElement info retrieval methods for element presence
-    public String getHeaderTextCart() {
-        return getHeader.getText();
-    }
-
-    public boolean isCartHeaderDisplayed() {
-        try {
-            getHeader.isDisplayed();
-        } catch (Exception e) {
-            System.out.println("Exception caught for Cart Header: " + e);
-        }
-        return true;
-    }
+    WebElement yourCartCheckoutButton;
 
     public String getItemNameFromCart() {
-        return getItemName.getText();
+        return cartItemName.getText();
     }
 
     public String getItemDescrFromCart() {
-        return getItemDesc.getText();
+        return cartItemDesc.getText();
     }
 
     public String getItemPriceFromCart() {
-        return getItemPrice.getText();
+        return cartItemPrice.getText();
     }
 
     public String getRemoveTextFromCart() {
-        return getItemRemoveButton.getText();
+        return itemRemoveButton.getText();
     }
 
     public boolean isRemoveElementFromCartDisplayed() {
         try {
-            getItemRemoveButton.isDisplayed();
+            itemRemoveButton.isDisplayed();
         } catch (Exception e) {
             System.out.println("Exception caught for REMOVE button: " + e);
         }
@@ -66,7 +52,7 @@ public class YourCartPageObject extends PageObjectBase {
 
     public boolean isCheckoutElementFromCartDisplayed() {
         try {
-            getYourCartCheckoutButton.isDisplayed();
+            yourCartCheckoutButton.isDisplayed();
         } catch (Exception e) {
             System.out.println("Exception caught for CHECKOUT element: " + e);
         }
@@ -74,10 +60,10 @@ public class YourCartPageObject extends PageObjectBase {
     }
 
     public String getCheckoutTextFromCart() {
-        return getYourCartCheckoutButton.getText();
+        return yourCartCheckoutButton.getText();
     }
 
     public void clickCheckoutButtonCart() {
-        getYourCartCheckoutButton.click();
+        yourCartCheckoutButton.click();
     }
 }

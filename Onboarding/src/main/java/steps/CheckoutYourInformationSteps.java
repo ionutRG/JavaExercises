@@ -1,31 +1,25 @@
 package steps;
 
 import net.thucydides.core.annotations.Step;
-import pageObjects.CheckoutYourInformationPageObject;
+import pageObjects.CheckoutYourInformationPO;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class CheckoutYourInformationSteps {
-    //todo the name of the page object should not include "steps" keyword since it doesn't contain step methods
-    // "steps" keyword is used for step classes objects
-    // changed from checkoutYourInfoSteps to checkoutYourInfo
-    CheckoutYourInformationPageObject checkoutYourInfo;
+    //** changed from checkoutYourInfoSteps to checkoutYourInfoPage
+    CheckoutYourInformationPO checkoutYourInfoPage;
 
-
-    //todo verifyUserDetailsBox returns boolean and checks if the detail box is displayed
-    // when naming methods use very specific names
-    // e.g verifyUserDetailsBox() should be isUserDetailsBoxDisplayed(), "is" keyword implies that the method returns boolean value
-    // and verifyUserDetails() should be verifyUserDetailsBoxIsDisplayed(), "verify" keyword implies that an assert is executed
+    //** modified method names based on info above
     @Step("Expected: User details element on Checkout Your Information is present")
-    public void isUserDetailsBoxDisplayed() {
-        assertThat(checkoutYourInfo.isUserDetailsBox(), is(true));
+    public void verifyUserDetailsBoxDisplayed() {
+        assertThat(checkoutYourInfoPage.isUserDetailsBoxDisplayed(), is(true));
     }
 
-    //todo same here, verifyContinueBtn doesn't express what is actual verified
+    //** renamed verifyContinueBtn to isContinueButtonDisplayed
     @Step("Expected: CONTINUE Button is present")
-    public void isContinueButtonDisplayed() {
-        assertThat(checkoutYourInfo.isContinueButton(), is(true));
+    public void verifyContinueButtonDisplayed() {
+        assertThat(checkoutYourInfoPage.isContinueButtonDisplayed(), is(true));
     }
 
 //    @Step("Expected: CONTINUE Button text is: {0}")
@@ -33,9 +27,9 @@ public class CheckoutYourInformationSteps {
 //        assertThat(checkoutYourInfoSteps.continueBtnText(), is(expectedValue));
 //    }
 
-    // todo you can combine the next 2 methods into a single one => checkoutCart()
+    // combined in CheckYourInfoPO: added click into enterUserDetails method from PO
     @Step("Enter User checkout details: First name: {0}, Last name: {1}, Zip code: {2}")
     public void enterUserDetails(String fName, String lName, String zipCode) {
-        checkoutYourInfo.enterUserDetails(fName, lName, zipCode);
+        checkoutYourInfoPage.enterUserDetails(fName, lName, zipCode);
     }
 }

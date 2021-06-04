@@ -3,36 +3,35 @@ package pageObjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class CheckoutCartPageObject extends PageObjectBase {
+public class CheckoutCartPOBase extends PageObjectBase {
 
     @FindBy(xpath = "//div[contains(@class, 'header_secondary_container')]")
-    WebElement getHeader;
+    WebElement cartHeader;
 
     @FindBy(xpath = "//div[contains(@class, 'cart_quantity_label')]")
-    WebElement getCartQuantityLabel;
+    WebElement cartQuantityLabel;
 
     @FindBy(xpath = "//div[contains(@class, 'cart_desc_label')]")
-    WebElement getCartDescriptionLabel;
+    WebElement cartDescriptionLabel;
 
     public String getHeaderTextCart() {
-        return getHeader.getText();
+        return cartHeader.getText();
     }
 
     public boolean isCartHeaderDisplayed() {
         try {
-            getHeader.isDisplayed();
+            cartHeader.isDisplayed();
         } catch (Exception e) {
             System.out.println("Exception caught for Cart Header: " + e);
         }
         return true;
     }
 
-    public String getQtyLabel() {
-        return getCartQuantityLabel.getText();
+    public String getQtyLabelText() {
+        return cartQuantityLabel.getText();
     }
 
-    public String getDescrLabel() {
-        return getCartDescriptionLabel.getText();
+    public String getDescrLabelText() {
+        return cartDescriptionLabel.getText();
     }
-
 }

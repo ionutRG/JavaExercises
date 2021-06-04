@@ -1,13 +1,13 @@
 package steps;
 
 import net.thucydides.core.annotations.Step;
-import pageObjects.YourCartPageObject;
+import pageObjects.CheckoutYourCartPO;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class YourCartSteps extends StepsBase {
-    YourCartPageObject cartPage;
+    CheckoutYourCartPO cartPage;
 
     @Step("Expected: Item name from Cart is: {0}")
     public void verifyYourCartItemName(String itemNameCart) {

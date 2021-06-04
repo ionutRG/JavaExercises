@@ -32,7 +32,7 @@ public class LoginPageObject extends PageObjectBase {
         return emptyAndLockedOutErrorMessage.getText();
     }
 
-    public boolean getProblemUserElement() {
+    public boolean isProblemUserElementDisplayed() {
         try {
             problemUserElement.isDisplayed();
         } catch (Exception e) {

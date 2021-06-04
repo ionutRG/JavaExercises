@@ -7,12 +7,11 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class InventoryPageObject extends PageObjectBase {
+public class InventoryPO extends PageObjectBase {
 
     //    get cart button item number badge (when NOT empty)
     @FindBy(xpath = "//span[contains(@class, 'shopping_cart_badge')]")
     WebElementFacade shoppingCartBadge;
-
     //    get Backpack remove button
     @FindBy(xpath = "//button[contains(@id, 'remove-sauce-labs-backpack')]")
     WebElement itemRemoveButton;
@@ -85,7 +84,7 @@ public class InventoryPageObject extends PageObjectBase {
         return itemRemoveButton.getText();
     }
 
-    public boolean getBackpackRemoveButtonDisplayed() {
+    public boolean isBackpackRemoveButtonDisplayed() {
         //** EXCEPTION added
         try {
             itemRemoveButton.isDisplayed();

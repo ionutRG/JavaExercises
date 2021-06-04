@@ -2,7 +2,6 @@ package steps;
 
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.WebDriver;
-import pageObjects.CheckoutCartPageObject;
 import pageObjects.PageObjectBase;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -10,7 +9,6 @@ import static org.junit.Assert.assertThat;
 
 public class StepsBase {
     PageObjectBase pageBaseSteps;
-    CheckoutCartPageObject checkoutCartSteps;
     WebDriver driver;
 
     @Step("Navigate to the url {0}")
