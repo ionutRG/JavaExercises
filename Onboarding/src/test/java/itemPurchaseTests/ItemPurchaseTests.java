@@ -156,6 +156,9 @@ public class ItemPurchaseTests {
         //check CHECKOUT Your Information header
         cartBaseSteps.isGenericCartHeaderDisplayed();
 
+        //check CONTINUE button text
+//        checkoutYourInfoSteps.verifyContinueBtnText("Continue");
+
         //check CHECKOUT YOUR INFORMATION header text
         cartBaseSteps.verifyYourCartHeaderText("CHECKOUT: YOUR INFORMATION");
 
@@ -214,24 +217,24 @@ public class ItemPurchaseTests {
         cartBaseSteps.verifyYourCartHeaderText("CHECKOUT: COMPLETE!");
 
         //check Thanks text
-        checkoutCompleteSteps.verifyThanksText("THANK YOU FOR YOUR ORDER");
+//        checkoutCompleteSteps.verifyThanksText("THANK YOU FOR YOUR ORDER");
 
         //check dispatched text
-        checkoutCompleteSteps.verifyDispatchGenericCartText("Your order has been dispatched, and will arrive just as fast as the pony can get there!");
+//        checkoutCompleteSteps.verifyDispatchGenericCartText("Your order has been dispatched, and will arrive just as fast as the pony can get there!");
 
         //check Pony express image
-        checkoutCompleteSteps.verifyCompleteImageDisplayed();
+//        checkoutCompleteSteps.verifyCompleteImageDisplayed();
 
         //check Back Home button displayed
-        checkoutCompleteSteps.isBackHomeBtnDisplayed();
+//        checkoutCompleteSteps.isBackHomeBtnDisplayed();
 
         //check Back Home button text
-        checkoutCompleteSteps.verifyBackHomeBtnText("Back Home");
+//        checkoutCompleteSteps.verifyBackHomeBtnText("Back Home");
 
         //click Back Home button
-        checkoutCompleteSteps.clickBackHome();
+//        checkoutCompleteSteps.clickBackHome();
 
         //check URL is correct
-        baseSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/inventory.html");
+//        baseSteps.verifyCurrentUrlIsCorrect("https://www.saucedemo.com/inventory.html");
     }
 }

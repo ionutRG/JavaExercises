@@ -39,9 +39,10 @@ public class ShopApp {
         };
 
 //  enhanced for loops definition
-//        for (String descr : itemsDescription) {
-//            System.out.println("Descriptions for items are: " + descr);
-//        }
+        for (String descr : itemsDescription) {
+            System.out.println("Descriptions for items are: " + descr);
+//            break;
+        }
 //
 //        for (double prices : itemsPrice) {
 //            System.out.println("Prices for items are: " + prices);
@@ -62,9 +63,9 @@ public class ShopApp {
         for (Clothing item : c1.getItems()) {
             System.out.println("//Am intrat in for cu: " + item.getDescription() + " si marime: " + item.getSize());
             if (item.getSize().equals("XL")) {
+                System.out.println("//Am intrat in if cu: " + counter + ", cu nume: " + item.getDescription() + " cu pret: " + item.getPriceWithoutTax() + " si marime: " + item.getSize());
                 counter++;
                 averagePrice = averagePrice + item.getPriceWithoutTax();
-                System.out.println("//Numar de items gasite: " + counter + ", cu nume: " + item.getDescription() + " cu pret: " + averagePrice);
             }
         }
         averagePrice = (counter == 0) ? 0 : averagePrice / counter;

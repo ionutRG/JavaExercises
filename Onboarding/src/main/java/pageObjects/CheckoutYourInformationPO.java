@@ -39,7 +39,7 @@ public class CheckoutYourInformationPO extends PageObjectBase {
     public String continueBtnText() {
         //** EXCEPTION added!
         try {
-            continueButton.getAttribute("value");
+            continueButton.getAttribute("name");
         } catch (Exception e) {
             System.out.println("Exception caught for CONTINUE button text: " + e.getMessage());
         }

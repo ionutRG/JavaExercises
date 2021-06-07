@@ -22,10 +22,10 @@ public class CheckoutYourInformationSteps {
         assertThat(checkoutYourInfoPage.isContinueButtonDisplayed(), is(true));
     }
 
-//    @Step("Expected: CONTINUE Button text is: {0}")
-//    public void verifyContinueBtnText(String expectedValue) {
-//        assertThat(checkoutYourInfoSteps.continueBtnText(), is(expectedValue));
-//    }
+    @Step("Expected: CONTINUE Button text is: {0}")
+    public void verifyContinueBtnText(String expectedValue) {
+        assertThat(checkoutYourInfoPage.continueBtnText(), is(expectedValue));
+    }
 
     // combined in CheckYourInfoPO: added click into enterUserDetails method from PO
     @Step("Enter User checkout details: First name: {0}, Last name: {1}, Zip code: {2}")

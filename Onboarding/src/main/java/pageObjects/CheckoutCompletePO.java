@@ -17,7 +17,7 @@ public class CheckoutCompletePO {
     WebElement checkoutCompleteBackHomeBtn;
 
     public String getCompleteThanksText() {
-        return checkoutCompleteThanks.getAttribute("style");
+        return checkoutCompleteThanks.getText();
     }
 
     public String getCompleteDispatchText() {
@@ -35,7 +35,7 @@ public class CheckoutCompletePO {
 
     public boolean isBackHomeBtnDisplayed() {
         try {
-            checkoutCompleteBackHomeBtn.isDisplayed();
+            checkoutCompleteBackHomeBtn.isEnabled();
         } catch (Exception e) {
             System.out.println("Exception caught for Back Home button: " + e);
         }
