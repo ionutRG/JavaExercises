@@ -53,8 +53,12 @@ public class Department {
 
     public Employee getEmployeeById(int empId) {
         for (Employee emp : employees) {
-            if (emp.getEmployeeId() == empId) {
-                return emp;
+            if (emp != null) {
+                if (emp.getEmployeeId() == empId) {
+                    return emp;
+                }
+            } else {
+                System.out.println("Employee ID does not exist in department!");
             }
         }
         return null;
